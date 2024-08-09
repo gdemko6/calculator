@@ -4,12 +4,14 @@ function divide(a,b) {a/b}
 function multiply(a,b) {a*b}
 
 function operate(a, b, operator){
-    if (operator === "+") add(a,b);
-    else if (operator === "-") subtract(a,b);
-    else if (operator === "/") divide(a,b);
-    else if (operator === "*") multiply(a,b);
+    let result;
+    if (operator === "+") result = add(a,b);
+    else if (operator === "-") result = subtract(a,b);
+    else if (operator === "/") result = divide(a,b);
+    else if (operator === "*") result = multiply(a,b);
 
     else alert("invalid operator!!");
+    return result;
 }
 
 let a;
