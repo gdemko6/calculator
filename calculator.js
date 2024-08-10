@@ -17,3 +17,10 @@ function operate(a, b, operator){
 let a;
 let b;
 let operator;
+
+let displayVal = 0;
+let display = document.querySelector("#display");
+
+function populateDisplay(num){
+    display.innerHTML = num;
+}
