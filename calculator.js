@@ -21,6 +21,15 @@ let operator;
 let displayVal = 0;
 let display = document.querySelector("#display");
 
-function populateDisplay(num){
-    display.innerHTML = num;
+function populateDisplay(buttonPressed){
+    if(buttonPressed==="clear"){
+        display.innerHTML=0;
+        return;
+    }
+    display.innerHTML = buttonPressed;
 }
+
+let buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+    button.addEventListener("click", () => populateDisplay(button.innerHTML));
+})
