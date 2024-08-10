@@ -14,22 +14,37 @@ function operate(a, b, operator){
     return result;
 }
 
-let a;
-let b;
-let operator;
+let a = "";
+let b = "";
+let operator = "";
+let operators = ["+", + "-", + "/" + "*"];
 
-let displayVal = 0;
+let displayVal = "";
 let display = document.querySelector("#display");
 
 function populateDisplay(buttonPressed){
-    if(buttonPressed==="clear"){
-        display.innerHTML=0;
+    if(buttonPressed.includes("clear")){
+        clear();
         return;
     }
     display.innerHTML = buttonPressed;
 }
 
+function clear(){
+    display.innerHTML=0;
+    a="";
+    b="";
+    operator="";
+}
+
 let buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
-    button.addEventListener("click", () => populateDisplay(button.innerHTML));
+    button.addEventListener("click", () => {
+        if(operator==="" && operators.every(operand => !displayVal.includes(operand))){
+            a += String(button.innerHTML);
+            displayVal+= a;
+        }
+        populateDisplay(displayVal);
+    });
+    
 })
