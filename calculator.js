@@ -40,6 +40,9 @@ function clear(){
 let buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
+        if(operators.includes(button.innerHTML)){
+            operator = button.innerHTML;
+        }
         if(operator==="" && operators.every(operand => !displayVal.includes(operand))){
             a += String(button.innerHTML);
             displayVal= a;
