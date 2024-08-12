@@ -42,7 +42,7 @@ buttons.forEach((button) => {
     button.addEventListener("click", () => {
         if(operator==="" && operators.every(operand => !displayVal.includes(operand))){
             a += String(button.innerHTML);
-            displayVal+= a;
+            displayVal= a;
         }
         populateDisplay(displayVal);
     });
