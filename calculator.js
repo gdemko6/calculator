@@ -1,7 +1,7 @@
-function add(a,b) {a+b}
-function subtract(a,b) {a-b}
-function divide(a,b) {a/b}
-function multiply(a,b) {a*b}
+function add(a,b) {populateDisplay(a+b)}
+function subtract(a,b) {populateDisplay(a-b)}
+function divide(a,b) {populateDisplay(a/b)}
+function multiply(a,b) {populateDisplay(a*b)}
 
 function operate(a, b, operator){
     let result;
@@ -10,7 +10,7 @@ function operate(a, b, operator){
     else if (operator === "/") result = divide(a,b);
     else if (operator === "*") result = multiply(a,b);
 
-    else alert("invalid operator!!");
+    else alert("Need to enter a number, then an operator, and then another number.");
     return result;
 }
 
@@ -44,7 +44,10 @@ buttons.forEach((button) => {
                 populateDisplay(displayVal);
             }
         }
-        else if(button.innerHTML == "clear") {
+        else if(button.innerHTML === "="){
+            operate(Number(a), Number(b), operator);
+        }
+        else if(button.innerHTML === "clear") {
             clear();
         }
         else if(operator===""){
