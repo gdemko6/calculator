@@ -17,17 +17,13 @@ function operate(a, b, operator){
 let a = "";
 let b = "";
 let operator = "";
-let operators = ["+", + "-", + "/" + "*"];
+let operators = ["+", "-", "/", "*"];
 
 let displayVal = "";
 let display = document.querySelector("#display");
 
-function populateDisplay(buttonPressed){
-    if(buttonPressed.includes("clear")){
-        clear();
-        return;
-    }
-    display.innerHTML = buttonPressed;
+function populateDisplay(displayVal){
+    display.innerHTML = displayVal;
 }
 
 function clear(){
@@ -35,19 +31,33 @@ function clear(){
     a="";
     b="";
     operator="";
+    displayVal = "";
 }
 
 let buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
         if(operators.includes(button.innerHTML)){
-            operator = button.innerHTML;
+            if(operator === ""){
+                operator = button.innerHTML;
+                displayVal += String(button.innerHTML);
+                populateDisplay(displayVal);
+            }
         }
-        if(operator==="" && operators.every(operand => !displayVal.includes(operand))){
+        else if(button.innerHTML == "clear") {
+            clear();
+        }
+        else if(operator===""){
             a += String(button.innerHTML);
-            displayVal= a;
+            displayVal = displayVal + String(button.innerHTML);
+            populateDisplay(displayVal);
         }
-        populateDisplay(displayVal);
+        else {
+            b += String(button.innerHTML);
+            displayVal = displayVal + String(button.innerHTML);
+            populateDisplay(displayVal);
+        }
+        
     });
     
 })
